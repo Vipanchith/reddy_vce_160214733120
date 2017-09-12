@@ -235,7 +235,12 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public int getCurrentAgeByDate(int indexOfStudent) {
 		// Add your implementation here
-		return 0;
+		if (indexOfStudent == 0)
+			throw new IllegalArgumentException();
+		
+		Date date = new Date();
+		long age = (date.getTime()/(1000 * 60 * 60 * 24*365)) - (students[indexOfStudent].getBirthDate().getTime()/(1000 * 60 * 60 * 24*365));
+		return (int)age;
 	}
 
 	@Override
