@@ -261,7 +261,7 @@ public class StudentGroup implements StudentArrayOperation {
 		int idx = 0;
 		for (int i=0; i<students.length; i++)
 			if (students[i].getAvgMark() >= max)
-				markList[idx] = students[i];
+				markList[idx++] = students[i];
 		
 		return markList;
 	}
