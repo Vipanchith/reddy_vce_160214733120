@@ -269,8 +269,15 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
-		//for (int i=0; )
+		if(student == null)
+			throw new IllegalArgumentException();
 		
-		return null;
+		int i = 0;
+		for(i=0; i<students.length; i++)
+			if(students[i].compareTo(student) == 0)
+				break;
+		
+		i++;
+		return students[i];
 	}
 }
