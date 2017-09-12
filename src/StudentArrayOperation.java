@@ -105,7 +105,6 @@ public interface StudentArrayOperation {
 	 */
 	void remove(int index);
 	
-
 	/**
 	 * Removes the first occurrence of the specified element from this array, if
 	 * it is present. If this array does not contain the element, it is
@@ -119,7 +118,6 @@ public interface StudentArrayOperation {
 	 * @throws IllegalArgumentException
 	 */
 	void remove(Student student);
-
 	
 	/**
 	 * Removes all elements from the specified index (except the element with
