@@ -1,3 +1,5 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -184,14 +186,44 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getByBirthDate(Date date) {
 		// Add your implementation here
+		if (date == null)
+			throw new IllegalArgumentException();
+		int count = 0;
+		for (int i=0; i<students.length; i++) {
+			if (students[i].getBirthDate().before(date) || students[i].getBirthDate().compareTo(date) == 0)
+				count++;
+		}
 		
-		return null;
+		Student[] birthList = new Student[count];
+		int idx = 0;
+		for (int i=0; i<students.length; i++) {
+			if (students[i].getBirthDate().before(date) || students[i].getBirthDate().compareTo(date) == 0)
+				birthList[idx++] = students[i];
+		}
+		
+		return birthList;
 	}
 
 	@Override
 	public Student[] getBetweenBirthDates(Date firstDate, Date lastDate) {
 		// Add your implementation here
-		return null;
+		if (firstDate == null || lastDate == null)
+			throw new IllegalArgumentException();
+		
+		int count = 0;
+		for (int i=0; i<students.length; i++) {
+			if ((students[i].getBirthDate().after(firstDate) || students[i].getBirthDate().compareTo(firstDate) == 0) && (students[i].getBirthDate().before(firstDate) ||students[i].getBirthDate().compareTo(lastDate) == 0))
+				count++;
+		}
+		
+		Student[] birthList = new Student[count];
+		int idx = 0;
+		for (int i=0; i<students.length; i++) {
+			if ((students[i].getBirthDate().after(firstDate) || students[i].getBirthDate().compareTo(firstDate) == 0) && (students[i].getBirthDate().before(firstDate) ||students[i].getBirthDate().compareTo(lastDate) == 0))
+				birthList[idx++] = students[i];
+		}
+		
+		return birthList;
 	}
 
 	@Override
@@ -215,12 +247,30 @@ public class StudentGroup implements StudentArrayOperation {
 	@Override
 	public Student[] getStudentsWithMaxAvgMark() {
 		// Add your implementation here
-		return null;
+		double sum = 0;
+		for (int i=0; i<students.length; i++)
+			sum += students[i].getAvgMark();
+		double avg = sum / students.length;
+		
+		int count = 0;
+		for (int i=0; i<students.length; i++)
+			if (students[i].getAvgMark() > avg)
+				count++;
+		
+		Student[] markList = new Student[count];
+		int idx = 0;
+		for (int i=0; i<students.length; i++)
+			if (students[i].getAvgMark() > avg)
+				markList[idx] = students[i];
+		
+		return markList;
 	}
 
 	@Override
 	public Student getNextStudent(Student student) {
 		// Add your implementation here
+		//for (int i=0; )
+		
 		return null;
 	}
 }
